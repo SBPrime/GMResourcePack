@@ -4,7 +4,7 @@ for note in {1..127..1}
 do
     echo Note $note
     java -jar ./NoteGen.jar D $note ./tmp.mid
-    timidity -OvM -s 44100 -id -o ./ds/d$note.ogg ./tmp.mid
+    timidity --noise-shaping=1 -OvM -s 44100 -id -o ./ds/d$note.ogg ./tmp.mid
 done
 
 
@@ -16,7 +16,7 @@ do
     do
 	echo Octave $octave
 	java -jar ./NoteGen.jar $instrument $octave ./tmp.mid
-	timidity -OvM -s 44100 -id -o ./bank0/$instrument/g$octave.ogg ./tmp.mid
+	timidity --noise-shaping=1 -OvM -s 44100 -id -o ./bank0/$instrument/g$octave.ogg ./tmp.mid
     done
 done
 
